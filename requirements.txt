@@ -1,0 +1,20 @@
+# AUV anomaly detection benchmark — runtime dependencies
+# Python >= 3.10.  Install with:  pip install -r requirements.txt
+#
+# For CUDA-accelerated PyTorch, install the matching wheel from
+# https://pytorch.org/get-started/locally/ before installing the rest.
+
+numpy
+pandas
+scipy
+scikit-learn
+pyyaml
+matplotlib
+plotly
+tqdm
+pyarrow
+threadpoolctl
+torch>=2.5
+
+# Testing
+pytest

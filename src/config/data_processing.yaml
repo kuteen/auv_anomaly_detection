@@ -1,0 +1,52 @@
+data:
+  dataset_manifest: "src/config/manifests/dataset_manifest.yaml"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  normalisation_stats_path: "data/processed/normalisation_stats.json"
+  sensors:
+    - m_altitude
+    - m_ballast_pumped
+    - m_battery
+    - m_battery_inst
+    - m_battpos
+    - m_coulomb_amphr_total
+    - m_depth
+    - m_final_water_vx
+    - m_final_water_vy
+    - m_heading
+    - m_lat
+    - m_lon
+    - m_leakdetect_voltage
+    - m_pitch
+    - m_roll
+    - m_speed
+    - sci_water_cond
+    - sci_water_pressure
+    - sci_water_temp
+
+data_processing:
+  metadata_columns:
+    - year
+    - julian_day
+    - dive_cycle
+  time_columns:
+    - m_present_time
+    - sci_m_present_time
+  ddm_columns:
+    - m_lon
+    - m_lat
+  min_datapoints_per_group: 10
+  outlier_chunk_size: 64
+  outlier_iqr_multiplier: 3.0
+  outlier_percentile_lower: 0.01
+  outlier_percentile_upper: 0.99
+  time_gap_threshold_s: 800
+  time_gap_fill_s: 60
+  interpolation_interval_s: 5
+  normalisation: "minmax"
+  normalisation_min: 1.0
+  normalisation_max: 5.0
+
+windowing:
+  window_length: 64
+  stride: 64

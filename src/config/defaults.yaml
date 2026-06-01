@@ -1,0 +1,78 @@
+# Canonical benchmark defaults.
+# The portable dataset and preprocessing contract lives in
+# src/config/data_processing.yaml and is injected at load time.
+
+data:
+  data_processing_config: "src/config/data_processing.yaml"
+
+splits:
+  train_ids: []
+  val_ids: []
+  test_ids: []
+  val_fraction: 0.10
+
+faults:
+  types:
+    - wing_loss
+    - sensor_dropout
+  onset_fraction: 0.5
+  magnitude: 2.5
+
+graph:
+  builder: "fixed"            # fixed | correlation | learned
+  adjacency_list: "domain_knowledge"
+  correlation_threshold: 0.3
+  correlation_top_k: 5
+
+model:
+  name: "graph_stgnn"         # isolation_forest | ocsvm | elliptic_envelope | lstm_ae | cnn_ae | tranad | graph_stgnn
+  hidden_dim: 64
+  n_heads: 4
+  n_layers: 2
+  dropout: 0.1
+  graph_conv: "graphsage"      # gcn | graphsage | gat | gatv2
+  temporal_mode: "gru"         # transformer | rnn | gru | lstm
+
+runtime:
+  device: "auto"               # auto | cpu | cuda
+  cpu_threads: "auto"          # auto = all available logical CPU threads
+  interop_threads: "auto"      # auto = small coordination pool for Torch operators
+  dataloader_workers: 0        # windows are fully materialized in RAM; worker processes add overhead
+  pin_memory: "auto"
+  persistent_workers: false
+  prefetch_factor: 4
+  cudnn_benchmark: true
+  allow_tf32: true
+  matmul_precision: "high"
+
+classical:
+  isolation_forest_n_estimators: 300
+  isolation_forest_max_samples: 8192
+  ocsvm_max_train_windows: 10000
+  elliptic_envelope_max_train_windows: 10000
+
+training:
+  epochs: 100
+  batch_size: 1024
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 8
+  min_delta: 0.0001
+  gradient_clip: 1.0
+  seeds: [42, 43, 44, 45, 46]
+
+thresholding:
+  method: "quantile"          # quantile | rolling | evt
+  quantile: 0.95
+  rolling_window: 500
+  rolling_k: 3.0
+  evt_threshold_quantile: 0.95
+
+evaluation:
+  latency_unit: "timesteps"   # timesteps | seconds
+
+output:
+  base_dir: "reports/full_benchmark"
+  save_latex: true
+  save_csv: true
+  save_md: true

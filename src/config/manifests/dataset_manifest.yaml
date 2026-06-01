@@ -1,0 +1,46 @@
+version: 1
+sequence_index_path: "data/processed/sequence_index.parquet"
+
+# Each entry describes one deployment-style mission dataset backed by one raw
+# parquet file and one cached processed tensor.
+missions:
+  - mission_id: "454"
+    region: "region_east"
+    year: 2018
+    raw_path: "data/raw/454.parquet"
+    tensor_path: "data/processed/454.npy"
+  - mission_id: "481"
+    region: "region_central"
+    year: 2018
+    raw_path: "data/raw/481.parquet"
+    tensor_path: "data/processed/481.npy"
+  - mission_id: "494"
+    region: "region_central"
+    year: 2018
+    raw_path: "data/raw/494.parquet"
+    tensor_path: "data/processed/494.npy"
+  - mission_id: "499"
+    region: "region_central"
+    year: 2019
+    raw_path: "data/raw/499.parquet"
+    tensor_path: "data/processed/499.npy"
+  - mission_id: "517"
+    region: "region_central"
+    year: 2019
+    raw_path: "data/raw/517.parquet"
+    tensor_path: "data/processed/517.npy"
+  - mission_id: "592"
+    region: "region_west"
+    year: 2022
+    raw_path: "data/raw/592.parquet"
+    tensor_path: "data/processed/592.npy"
+  - mission_id: "605"
+    region: "region_far_west"
+    year: 2023
+    raw_path: "data/raw/605.parquet"
+    tensor_path: "data/processed/605.npy"
+  - mission_id: "615"
+    region: "region_west"
+    year: 2023
+    raw_path: "data/raw/615.parquet"
+    tensor_path: "data/processed/615.npy"

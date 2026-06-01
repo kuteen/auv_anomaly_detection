@@ -1,0 +1,61 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Secrets and keys (do not commit)
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pem
+*.key
+.env
+
+# Large local data (raw telemetry + processed tensors are not redistributed;
+# obtain raw Slocum G2 data from the British Oceanographic Data Centre, see README)
+/data/*
+!/data/raw/
+/data/raw/*
+!/data/raw/.gitkeep
+!/data/processed/
+/data/processed/*
+!/data/processed/.gitkeep
+!/data/external/
+/data/external/*
+!/data/external/.gitkeep
+!/data/model_dicts/
+/data/model_dicts/*
+!/data/model_dicts/.gitkeep
+
+# Generated benchmark outputs (metrics, plots, checkpoints)
+/reports/*
+!/reports/.gitkeep
+
+# Python caches/build artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+
+# Logs
+*.log
+benchmark_log*.txt
+
+# LaTeX auxiliary files
+*.aux
+*.synctex.gz
+*.out
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+
+# OS/editor
+.DS_Store
+.vscode/
+
+# Local-only working directory, tracked in a separate repository
+writing/
