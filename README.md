@@ -1,6 +1,6 @@
 # AUV Anomaly Detection
 
-A public benchmark for anomaly detection on underwater glider telemetry, supporting the journal article *Spatio-Temporal Graph Neural Network for Autonomous Anomaly Detection in Underwater Glider Telemetry* (IEEE Journal of Oceanic Engineering, 2026). It compares classical detectors, deep autoencoders, a transformer baseline, and a spatio-temporal graph neural network on Slocum G2 glider missions, with reproducible preprocessing, training, fault injection, and evaluation. All executable Python code lives under `src/`.
+A public benchmark for anomaly detection on underwater glider telemetry, supporting the journal article [*Spatio-Temporal Graph Neural Network for Autonomous Anomaly Detection in Underwater Glider Telemetry*](https://doi.org/10.1109/JOE.2026.3702319) (IEEE Journal of Oceanic Engineering, 2026). It compares classical detectors, deep autoencoders, a transformer baseline, and a spatio-temporal graph neural network on Slocum G2 glider missions, with reproducible preprocessing, training, fault injection, and evaluation. All executable Python code lives under `src/`.
 
 ## Citation
 
@@ -12,7 +12,9 @@ If you use this code or benchmark, please cite the paper.
   author  = {Kutin, Nana and Zhou, Silvia Linjing and Liu, Yuanchang and Anderlini, Enrico and Thomas, Giles and Wu, Peng},
   journal = {IEEE Journal of Oceanic Engineering},
   year    = {2026},
-  note    = {Volume, issue, pages, and DOI to be assigned on publication}
+  pages   = {1--11},
+  doi     = {10.1109/JOE.2026.3702319},
+  note    = {Early access}
 }
 ```
 
