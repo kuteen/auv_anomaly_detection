@@ -10,11 +10,10 @@ convention is shared across the suite, higher values mean more anomalous.
 from __future__ import annotations
 
 import abc
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Dict, Optional
 
 import numpy as np
-import torch
 from torch.utils.data import DataLoader
 
 

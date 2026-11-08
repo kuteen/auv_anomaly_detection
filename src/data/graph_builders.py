@@ -14,7 +14,7 @@ from __future__ import annotations
 import json
 import logging
 import pathlib
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, Optional, Tuple
 
 import numpy as np
 import torch
@@ -70,7 +70,7 @@ class FixedGraphBuilder:
             }
         elif isinstance(adjacency_list, str) and adjacency_list == "domain_knowledge":
             try:
-                from data.graph_topology import build_adjacency_matrix, SENSOR_TO_IDX
+                from data.graph_topology import build_adjacency_matrix
                 A = build_adjacency_matrix(n_sensors)
                 # Convert to adjacency list format
                 adjacency_list = {}
