@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import math
 import shutil
-from typing import Iterable, Iterator, Optional, Sequence, Tuple, TypeVar
+from typing import Optional, Sequence, Tuple
 
 try:
     from tqdm.auto import tqdm
@@ -20,8 +20,6 @@ try:
 except ImportError:  # pragma: no cover - optional dependency fallback
     tqdm = None
     HAS_TQDM = False
-
-T = TypeVar("T")
 
 
 # ── Terminal width and formatting ───────────────────────────────────────
@@ -172,37 +170,3 @@ class ProgressBar:
         """Close the underlying bar, a no-op without tqdm."""
         if self._bar is not None:
             self._bar.close()
-
-
-def iter_progress(
-    iterable: Iterable[T],
-    *,
-    desc: str,
-    total: Optional[int] = None,
-    unit: str = "item",
-    leave: bool = False,
-) -> Iterator[T]:
-    """Yield items from ``iterable``, wrapping in a tqdm bar when available.
-
-    Args:
-        iterable: Source items to iterate.
-        desc: Label shown to the left of the bar.
-        total: Expected item count, useful when ``iterable`` has no ``len``.
-        unit: Noun for one item, shown in the rate display.
-        leave: Whether to keep the finished bar on screen.
-
-    Yields:
-        Each item of ``iterable`` in order.
-    """
-    if HAS_TQDM:
-        yield from tqdm(
-            iterable,
-            total=total,
-            desc=f"  {desc}",
-            unit=unit,
-            dynamic_ncols=True,
-            leave=leave,
-        )
-        return
-    # Plain pass-through when tqdm is not installed.
-    yield from iterable

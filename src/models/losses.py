@@ -28,11 +28,6 @@ def reconstruction_mse(
     return err.mean()
 
 
-def kl_divergence(mu: torch.Tensor, logvar: torch.Tensor) -> torch.Tensor:
-    """Standard KL term for VAEs: -0.5 * sum(1 + log(σ²) - μ² - σ²)."""
-    return -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
-
-
 def adversarial_loss(
     o1: torch.Tensor, o2: torch.Tensor, x: torch.Tensor, epoch: int, n_epochs: int
 ) -> torch.Tensor:

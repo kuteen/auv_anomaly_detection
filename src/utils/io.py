@@ -9,7 +9,6 @@ from __future__ import annotations
 import json
 import os
 import pathlib
-import pickle
 import tempfile
 from typing import Any
 
@@ -49,38 +48,8 @@ def save_json(obj: Any, path: str | pathlib.Path) -> None:
     _atomic_write_bytes(payload, path)
 
 
-def load_json(path: str | pathlib.Path) -> Any:
-    """Load and return the JSON document at ``path``."""
-    with open(path) as fh:
-        return json.load(fh)
-
-
 def save_yaml(obj: Any, path: str | pathlib.Path) -> None:
     """Serialise an object to block-style YAML and write it atomically."""
     path = pathlib.Path(path)
     payload = yaml.dump(obj, default_flow_style=False).encode("utf-8")
     _atomic_write_bytes(payload, path)
-
-
-def load_yaml(path: str | pathlib.Path) -> Any:
-    """Load and return the YAML document at ``path`` using a safe loader."""
-    with open(path) as fh:
-        return yaml.safe_load(fh)
-
-
-def save_pickle(obj: Any, path: str | pathlib.Path) -> None:
-    """Pickle an object and write it atomically."""
-    path = pathlib.Path(path)
-    payload = pickle.dumps(obj)
-    _atomic_write_bytes(payload, path)
-
-
-def load_pickle(path: str | pathlib.Path) -> Any:
-    """Load and return the pickled object at ``path``.
-
-    Security: unpickling executes arbitrary code, so only load pickle files this
-    project produced itself (for example local checkpoints under ``reports/``).
-    Never load a pickle from an untrusted or downloaded source.
-    """
-    with open(path, "rb") as fh:
-        return pickle.load(fh)
