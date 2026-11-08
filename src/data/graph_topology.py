@@ -1,5 +1,5 @@
 """
-Enhanced Graph Topology and Feature Engineering for AUV Sensor Networks
+Enhanced Graph Topology for AUV Sensor Networks
 
 Based on Slocum G2 glider domain knowledge:
 - Navigation physics: lat/lon change based on heading + speed

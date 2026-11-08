@@ -1,9 +1,8 @@
 """Loss functions shared across models.
 
-Reconstruction MSE backs the autoencoder baselines, the KL term backs the
-VAE variant, and the evolutionary adversarial loss backs the TranAD
-wrapper. All operate on batched windows of shape ``[B, K, m]``, batch by
-window length by channels.
+Reconstruction MSE backs the autoencoder baselines, and the evolutionary
+adversarial loss backs the TranAD wrapper. All operate on batched windows
+of shape ``[B, K, m]``, batch by window length by channels.
 """
 
 from __future__ import annotations

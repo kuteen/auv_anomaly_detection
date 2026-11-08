@@ -3,8 +3,8 @@
 Groups together the presentation utilities used by the benchmark command line,
 terminal width detection, metric formatting, boxed banners and section
 headings, and a thin progress-bar wrapper around ``tqdm``. When ``tqdm`` is not
-installed the progress helpers degrade gracefully to plain iteration and
-printing, so the CLI remains usable without the optional dependency.
+installed the progress helpers degrade gracefully to printing, so the CLI
+remains usable without the optional dependency.
 """
 
 from __future__ import annotations

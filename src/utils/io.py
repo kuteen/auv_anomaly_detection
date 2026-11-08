@@ -1,4 +1,4 @@
-"""IO helpers: JSON / YAML / pickle convenience wrappers.
+"""IO helpers: JSON / YAML convenience wrappers.
 
 Every writer goes through :func:`_atomic_write_bytes`, so a saved artefact is
 either the complete new file or the untouched old one, never a partial write.
