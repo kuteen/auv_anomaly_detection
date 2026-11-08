@@ -1,15 +1,12 @@
 """Loss functions shared across models.
 
-Reconstruction MSE backs the autoencoder baselines, the KL term backs the
-VAE variant, and the evolutionary adversarial loss backs the TranAD
-wrapper. All operate on batched windows of shape ``[B, K, m]``, batch by
-window length by channels.
+All operate on batched windows of shape ``[B, K, m]``, batch by window
+length by channels.
 """
 
 from __future__ import annotations
 
 import torch
-import torch.nn.functional as F
 
 
 def reconstruction_mse(
@@ -27,11 +24,6 @@ def reconstruction_mse(
     if reduction == "none":
         return err.mean(dim=1)  # average over time -> [B, m]
     return err.mean()
-
-
-def kl_divergence(mu: torch.Tensor, logvar: torch.Tensor) -> torch.Tensor:
-    """Standard KL term for VAEs: -0.5 * sum(1 + log(σ²) - μ² - σ²)."""
-    return -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
 
 
 def adversarial_loss(

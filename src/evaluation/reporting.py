@@ -7,7 +7,6 @@ import logging
 import pathlib
 from typing import Any, Dict, List, Optional
 
-import numpy as np
 
 logger = logging.getLogger(__name__)
 
