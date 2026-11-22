@@ -204,34 +204,6 @@ def _load_sequence_array(
     return array
 
 
-def _chronological_dev_test_split(
-    windows: np.ndarray,
-    test_fraction: float = 0.30,
-    val_fraction: float = 0.15,
-) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """Split one mission into train, val, and test windows in chronological order."""
-    n_windows = len(windows)
-    if n_windows < 4:
-        raise ValueError(
-            f"Need at least 4 windows for a within-mission split, got {n_windows}"
-        )
-
-    n_test = max(1, int(round(n_windows * test_fraction)))
-    n_test = min(n_test, n_windows - 2)
-    dev = windows[: n_windows - n_test]
-    test = windows[n_windows - n_test :]
-
-    n_val = max(1, int(round(len(dev) * val_fraction)))
-    n_val = min(n_val, len(dev) - 1)
-    train = dev[: len(dev) - n_val]
-    val = dev[len(dev) - n_val :]
-
-    if len(train) == 0 or len(val) == 0 or len(test) == 0:
-        raise ValueError("Chronological split produced an empty train, val, or test block")
-
-    return train, val, test
-
-
 def _train_val_split(windows: np.ndarray, val_fraction: float) -> tuple[np.ndarray, np.ndarray]:
     """Chronologically split training missions into train and validation windows."""
     n_windows = len(windows)

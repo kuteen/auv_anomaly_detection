@@ -28,8 +28,3 @@ class EarlyStopping:
             return False
         self._counter += 1
         return self._counter >= self.patience
-
-    def reset(self) -> None:
-        """Clear the best metric and patience counter for a fresh run."""
-        self._best = float("inf")
-        self._counter = 0
